@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamber Music Boise | World-Class Chamber Music in the Treasure Valley</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --burgundy: #2C5282;
+            --burgundy-light: #4299E1;
+            --dark-brown: #1A365D;
+            --cream: #F7FAFC;
+            --cream-dark: #EBF8FF;
+            --gold: #90CDF4;
+            --charcoal: #2D3748;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--cream);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--burgundy);
+            border-radius: 3px;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            background: transparent;
+        }
+
+        .nav-container.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 4rem;
+            box-shadow: 0 2px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            transition: transform 0.4s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: height 0.4s ease;
+            filter: brightness(0) invert(1);
+        }
+
+        .nav-container.scrolled .logo img {
+            filter: grayscale(100%) sepia(100%) hue-rotate(180deg) saturate(300%) brightness(0.7) contrast(1.2);
+        }
+
+        .footer-logo {
+            filter: grayscale(100%) sepia(100%) hue-rotate(180deg) saturate(300%) brightness(0.7) contrast(1.2);
+        }
+
+        .nav-container.scrolled .logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-container.scrolled .nav-links a {
+            color: var(--dark-brown);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-container.scrolled .nav-links a::after {
+            background: var(--burgundy);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-container.scrolled .nav-links a:hover {
+            color: var(--burgundy);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 1px;
+            background: var(--dark-brown);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: linear-gradient(rgba(26, 32, 44, 0.6), rgba(26, 32, 44, 0.6)), url('2violins.JPG');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            display: none;
+        }
+
+        @keyframes subtleFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(-2%, -2%) rotate(1deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 0.7rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 300;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-title span {
+            display: block;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--white);
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 2rem auto;
+            opacity: 0;
+            animation: expandLine 1s cubic-bezier(0.4, 0, 0.2, 1) 1s forwards;
+        }
+
+        @keyframes expandLine {
+            from {
+                width: 0;
+                opacity: 0;
+            }
+
+            to {
+                width: 60px;
+                opacity: 1;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .scroll-indicator span {
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--burgundy-light);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--burgundy), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scaleY(0.8);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--burgundy);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--dark-brown);
+            font-weight: 300;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+            /* Align text to top */
+        }
+
+        .about-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 1px solid var(--gold);
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .about-content {
+            padding-right: 2rem;
+        }
+
+        .about-text {
+            font-size: 1rem;
+            line-height: 2;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .about-text a {
+            color: var(--burgundy);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .about-text a:hover {
+            border-bottom-color: var(--burgundy);
+        }
+
+        /* Concerts Section */
+        .concerts {
+            background: var(--cream);
+        }
+
+        .concerts-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .concert-card {
+            background: var(--white);
+            overflow: hidden;
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .concert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .concert-card.no-image {
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .concert-image {
+            width: 100%;
+            height: auto;
+            /* Allow natural height */
+            min-height: 280px;
+            object-fit: contain;
+            /* Show full image */
+            background: var(--cream-dark);
+            /* Background for gaps if aspect ratio differs */
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .concert-card:hover .concert-image {
+            transform: scale(1.02);
+        }
+
+        .concert-content {
+            padding: 2.5rem;
+        }
+
+        .concert-venue {
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--burgundy);
+            margin-bottom: 0.5rem;
+        }
+
+        .concert-title {
+            font-size: 1.8rem;
+            color: var(--dark-brown);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .concert-description {
+            font-size: 0.9rem;
+            line-height: 1.9;
+            color: var(--charcoal);
+            font-weight: 300;
+        }
+
+        .concert-description a {
+            color: var(--burgundy);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .concert-description a:hover {
+            border-bottom-color: var(--burgundy);
+        }
+
+        /* Full-width concert card */
+        .concert-card.full-width {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .concert-card.full-width .concert-image {
+            height: 100%;
+            min-height: 350px;
+        }
+
+        .concert-card.full-width .concert-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+        }
+
+        /* Artists Section - High End Fashion Redesign */
+        .artists {
+            background: var(--white);
+            padding: 10rem 2rem;
+        }
+
+        .artists-grid {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .artist-card {
+            text-align: left;
+            padding: 0;
+            border: none;
+            position: relative;
+            background: transparent;
+        }
+
+        .artist-card::before {
+            display: none;
+        }
+
+        .artist-card:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .artist-image-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            background: var(--cream-dark);
+        }
+
+        .artist-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+            filter: none;
+            /* High fashion B&W look initially */
+            display: block;
+            border-radius: 0;
+            border: none;
+            margin: 0;
+        }
+
+        .artist-card:hover .artist-image {
+            transform: scale(1.05);
+            /* Reveal color on hover */
+            border-color: transparent;
+        }
+
+        .artist-info {
+            padding: 0 1rem;
+        }
+
+        .artist-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 1rem;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .artist-instrument {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--burgundy);
+            margin: 1rem 0 2rem;
+            display: block;
+        }
+
+        .artist-bio {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            font-weight: 300;
+            opacity: 1;
+        }
+
+        .artist-card:hover .artist-name,
+        .artist-card:hover .artist-instrument,
+        .artist-card:hover .artist-bio {
+            color: inherit;
+            /* Prevent color shift from previous styles */
+        }
+
+        .artist-initial {
+            display: none;
+        }
+
+        /* Artist Bio Image styles removed as they are redefined above */
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--dark-brown) 0%, var(--burgundy) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 10rem 2rem;
+        }
+
+        .contact .section-label {
+            color: var(--gold);
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact .section-title::after {
+            background: var(--gold);
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            border: 1px solid var(--gold);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .contact-button:hover::before {
+            left: 0;
+        }
+
+        .contact-button:hover {
+            color: var(--dark-brown);
+        }
+
+
+        /* Form Styles */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        select.form-control option {
+            background-color: var(--dark-brown);
+            color: var(--white);
+        }
+
+        .submit-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 1.2rem;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s ease;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .submit-btn:hover::before {
+            left: 0;
+        }
+
+        .submit-btn:hover {
+            color: var(--dark-brown);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .footer-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+        }
+
+        .footer-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            margin: 2rem auto;
+            opacity: 0.5;
+        }
+
+        .footer-copyright {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .about-image {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .concerts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .concert-card.full-width {
+                grid-template-columns: 1fr;
+            }
+
+            .concert-card.full-width .concert-image {
+                height: 250px;
+            }
+
+            .artists-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .concert-content {
+                padding: 2rem;
+            }
+
+            .concert-card.full-width .concert-content {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container" id="navbar">
+        <div class="nav-inner">
+            <a href="#home" class="logo">
+                <img src="cmblogo.png" alt="Chamber Music Boise">
+            </a>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#concerts">Concerts</a></li>
+                <li><a href="#artists">Artists</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-subtitle">Est. 2026 Boise Idaho</p>
+            <h1 class="hero-title">Chamber Music <span>Boise</span></h1>
+            <div class="hero-divider"></div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header reveal">
+            <span class="section-label">Our Story</span>
+            <h2 class="section-title">About CMB</h2>
+        </div>
+        <div class="about-container">
+            <div class="about-image reveal">
+                <img src="Photo1.jpg" alt="Chamber Music Boise Performance">
+            </div>
+            <div class="about-content reveal">
+                <p class="about-text" style="font-size: 1.5rem; line-height: 1.6; margin-bottom: 2rem;">Founded in the
+                    spring of 2026, Chamber Music Boise (CMB) was established to serve as a vibrant and active hub for
+                    chamber music in Boise and the greater Treasure Valley.</p>
+                <div style="width: 40px; height: 1px; background: var(--burgundy); margin-bottom: 2rem;"></div>
+                <p class="about-text">Our mission is to provide world-class, consistent chamber music experiences
+                    through performance, education, and interactive programming. By uniting a core ensemble of
+                    Boise-based musicians alongside distinguished guest artists, CMB offers thoughtfully curated
+                    concerts, collaborative events, and meaningful community outreach.</p>
+                <p class="about-text">We are dedicated to making chamber music accessible, inspiring, and inclusive,
+                    enriching the cultural fabric of Boise and engaging audiences of all ages and backgrounds.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concerts Section -->
+    <section class="concerts" id="concerts">
+        <div class="section-header reveal">
+            <span class="section-label">Experience</span>
+            <h2 class="section-title">Concerts</h2>
+        </div>
+        <div class="concerts-grid">
+            <!-- Tuttle House Concerts -->
+            <div class="concert-card reveal">
+                <img src="tuttlehouse.jpg" alt="Tuttle House" class="concert-image">
+                <div class="concert-content">
+                    <p class="concert-venue">Tuttle House at St. Michael's Episcopal Cathedral</p>
+                    <h3 class="concert-title">Tuttle House Concerts</h3>
+                    <p class="concert-description">In partnership with Tuttle House at St. Michael's Episcopal Cathedral
+                        & Idaho Concerts in Care. Chamber Music Boise is thrilled to announce the launch of a brand new
+                        Chamber Music Series. We invite you to join us for a series of intimate, hour-long performances
+                        that explore the depth and beauty of chamber music. Each program offers a thoughtfully curated
+                        experience designed to inspire and deepen an appreciation for this rich and expressive art form.
+                        Following each concert, please join us for complimentary refreshments and the opportunity to
+                        meet the musicians, connect with fellow music lovers, and be part of a warm, welcoming,
+                        arts-inspired community.</p>
+                </div>
+            </div>
+
+            <!-- CMB at Bown Crossing -->
+            <div class="concert-card reveal">
+                <img src="bownlibrary.jpg" alt="Library at Bown Crossing" class="concert-image">
+                <div class="concert-content">
+                    <p class="concert-venue">Library! At Bown Crossing</p>
+                    <h3 class="concert-title">CMB at Bown Crossing</h3>
+                    <p class="concert-description">Where contemporary architecture meets classical performance — CMB is
+                        proud to partner with the Library! At Bown Crossing in this brand new chamber music series. With
+                        floor-to-ceiling windows and soaring timber ceilings, please join us for an evening of chamber
+                        music in this beautiful setting located at the heart of Southeast Boise.</p>
+                </div>
+            </div>
+
+            <!-- Davis Fund -->
+            <div class="concert-card full-width reveal">
+                <div class="concert-content">
+                    <p class="concert-venue">St. Stephen's Episcopal Church, Boise ID</p>
+                    <h3 class="concert-title">Davis Education Fund Chamber Music Series</h3>
+                    <p class="concert-description">Every fall, members of CMB join together in an hour-long performance
+                        that helps to benefit the James and Alberta Education fund at St. Stephen's Episcopal Church in
+                        Boise. Following the performance, there will be a reception held in the Parish Hall. Please join
+                        us in supporting this noble cause — a free-will offering will be collected throughout the event.
+                    </p>
+                    <p class="concert-description"
+                        style="margin-top: 1.5rem; font-style: italic; border-left: 2px solid var(--gold); padding-left: 1.5rem;">
+                        "The James & Alberta Davis Education Fund has been a ministry of St. Stephen's Episcopal Church
+                        for over 25 years. We believe every child deserves an education, and we see the support of our
+                        community's children as part of our responsibility as God's people. Named in honor of our
+                        founding priest and his wife, the Davis Education Fund regularly gives funding to students,
+                        teachers, and programs throughout the Boise School District to provide clothing, food and
+                        snacks, hygiene supplies, car seats, swim lessons, driver's education courses, and a variety of
+                        other needs. Over the last year, the Davis Fund has granted over $10,000 benefiting students and
+                        teachers and supported trauma resiliency work and a wide-ranging effort to grant eyeglasses to
+                        students in need."</p>
+                </div>
+                <!-- Image Removed as requested -->
+                <div
+                    style="background: var(--cream-dark); display: flex; align-items: center; justify-content: center; min-height: 350px;">
+                    <p
+                        style="color: var(--burgundy); font-family: 'Cormorant Garamond', serif; font-size: 3rem; opacity: 0.1; font-style: italic;">
+                        CMB</p>
+                </div>
+            </div>
+
+            <!-- Classical Cocktails -->
+            <div class="concert-card no-image reveal">
+                <p class="concert-venue">Local Boise Venues</p>
+                <h3 class="concert-title">Classical Cocktails CMB</h3>
+                <p class="concert-description">Chamber Music Boise meets cocktail culture — join us for an evening of
+                    intimate performances, each thoughtfully paired with unique craft cocktails (or mocktails) designed
+                    specifically to complement the music. Each show supports a local bar, right here in Boise, as well
+                    as the musicians of Chamber Music Boise. Whether you've never listened to classical music, or are a
+                    connoisseur — classical cocktails aims to create a welcoming environment for everyone, regardless of
+                    musical background or knowledge. Together, we'll expand our palette of sounds and flavors in a fun
+                    and relaxed setting, all while getting to sip on some of our favorite drinks — Cheers!</p>
+            </div>
+
+            <!-- CMB at Home -->
+            <div class="concert-card reveal">
+                <!-- Image Removed as requested -->
+                <div class="concert-content">
+                    <p class="concert-venue">House Concerts / Private Residences</p>
+                    <h3 class="concert-title">CMB at Home</h3>
+                    <p class="concert-description">The most intimate chamber music experience: world-class performances
+                        in the warmth of private homes, continuing the centuries-old salon tradition. Experience the
+                        magic of music alongside the artists of CMB in your home. Please inquire with us <a
+                            href="#contact">here</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artists Section -->
+    <section class="artists" id="artists">
+        <div class="section-header reveal">
+            <span class="section-label">The Ensemble</span>
+            <h2 class="section-title">Our Artists</h2>
+        </div>
+        <div class="artists-grid">
+            <div class="artist-card reveal">
+                <div class="artist-image-container">
+                    <img src="Aubrey Holmes.jpg" alt="Aubrey Holmes" class="artist-image">
+                </div>
+                <div class="artist-info">
+                    <h3 class="artist-name">Aubrey Holmes</h3>
+                    <p class="artist-instrument">Violin / Viola</p>
+                    <div class="artist-bio">
+                        <p>“…a warm sound, and much joy…vivacious!” - The Strad [Carnegie Hall debut]</p><br>
+                        <p>Founder and Artistic Director of Chamber Music Boise (CMB), Aubrey Holmes, is a concert
+                            violinist/violist and chamber musician currently living and teaching in Boise, Idaho. During
+                            the 2022/2023 season, Mr. Holmes was a full time, core member of the Virginia Symphony
+                            Orchestra’s violin section - rotated into assistant concertmaster. He is also a founding
+                            member and violinist of the Heimat Quartet (2014–2020), which gave their Carnegie Hall debut
+                            in 2019. In the fall of the same year, Heimat joined the faculty at Shenandoah Conservatory
+                            in Winchester, VA, giving their final recital as an ensemble in February 2020 before
+                            disbanding after six years together.</p><br>
+                        <p>From 2011–2015, Mr. Holmes was based in Boston, Massachusetts. Here he played in Symphony
+                            Nova (Concertmaster/Principal 2nd), MetroWest Opera (Principal 2nd), Symphony Pro Musica
+                            (Principal 2nd), Boston Opera Collaborative (Associate Concertmaster), The Cape Ann Symphony
+                            (Associate Principal 2nd), Boston Modern Orchestra Project, The Vermont Symphony Orchestra,
+                            and The Cape Symphony Orchestra. Mr. Holmes is also the former first violinist of the Videri
+                            String Quartet which specializes in the performance and recording of video game music.</p>
+                        <br>
+                        <p>Other notable appearances and engagements with Heimat include faculty positions at
+                            Interlochen Center for the Arts High School Division – Advanced String Quartet Seminar, as
+                            well as quarter-finalists at the 2017 Fischoff National Chamber Music Competition. The
+                            Quartet also competed internationally at the 2019 Joachim International Chamber Music
+                            Competition held in Weimar, Germany where they also finished as quarter-finalists. Other
+                            international appearances include the International Mendelssohn Festival in Hamburg,
+                            Germany, The Esmeraldas International Music Festival held in Quito, Ecuador, and the
+                            Lunenberg Academy of Music (LAMP) in Lunenberg, Nova Scotia.</p><br>
+                        <p>His primary mentors have included Dr. Blanka Bednarz, Dr. Irina Muresanu, Cathy Meng
+                            Robinson, and Daniel Kurganov, as well as members of the Miami String Quartet, Shanghai
+                            Quartet, and the Audubon Quartet.</p><br>
+                        <p>Degrees Earned: Bachelor of Arts in violin performance, Master of Music in violin
+                            performance, Master of Music in chamber music (violin/Heimat Quartet), Artist Diploma in
+                            chamber music (violin/Heimat Quartet).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="artist-card reveal">
+                <div class="artist-image-container">
+                    <img src="Nicole Oswald.jpg" alt="Nicole Oswald" class="artist-image">
+                </div>
+                <div class="artist-info">
+                    <h3 class="artist-name">Nicole Oswald</h3>
+                    <p class="artist-instrument">Violin</p>
+                    <div class="artist-bio">
+                        <p>Nicole Oswald has served as the Acting Concertmaster of the Boise Philharmonic Orchestra
+                            beginning in the fall of 2024. A distinguished performer and dedicated educator, she is
+                            currently the Artist in Residence at the College of Idaho and a member of the Langroise
+                            Trio. Her commitment to community-driven music is reflected in her role as a founding member
+                            of the Thirdspace Quartet, which presented over 24 events in the Treasure Valley area during
+                            its opening season.</p><br>
+                        <p>Ms. Oswald’s orchestral career includes a tenured core position with the Virginia Symphony
+                            Orchestra and a previous role as concertmaster of The Orchestra Now. She has also performed
+                            with the West Virginia Symphony Orchestra and collaborated with world-renowned artists such
+                            as Gil Shaham, Andrés Cárdenes, and Charlie Castleman. A seasoned soloist and chamber
+                            musician, she has performed across the United States and abroad since her debut near her
+                            hometown of Boise, Idaho, at the age of 10. Her competitive success includes awards from the
+                            MTNA National Senior Strings Soloist Competition, the Stradivarius International Violin
+                            Competition(Youth Division), and the Hudson Valley Philharmonic Strings Competition.</p><br>
+                        <p>As an educator, Nicole maintains a private studio and has been invited to teach and perform
+                            at various institutions, including the College of William and Mary, Old Dominion University,
+                            and Christopher Newport University. Her academic background is marked by a strong
+                            international foundation; as a teenager, she studied abroad for three years at the Utrechts
+                            Conservatory in The Netherlands. She holds a Master of Music, Artist Diploma and Bachelor of
+                            Music from Carnegie Mellon University, Frost School of Music at the University of Miami, and
+                            the Eastman School of Music. During her graduate studies, she served as the teaching
+                            assistant for both Charlie Castleman and Andrés Cárdenes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="artist-card reveal">
+                <div class="artist-image-container">
+                    <img src="Rosie Weiss.jpg" alt="Rosie Weiss" class="artist-image">
+                </div>
+                <div class="artist-info">
+                    <h3 class="artist-name">Rosie Weiss</h3>
+                    <p class="artist-instrument">Violin</p>
+                    <div class="artist-bio">
+                        <p>Rosie Weiss is a versatile violinist, fiddler, and studio musician. She’s currently associate
+                            concertmaster of the Billings Symphony, and also performs with the Boise Philharmonic,
+                            Bozeman Symphony, and Palm Beach Symphony. She’s adjunct violin faculty at Rocky Mountain
+                            College, and maintains a private violin and fiddle studio in Boise, Idaho.</p><br>
+                        <p>As a founding member of Carnegie Hall's National Youth Orchestra, she served for three
+                            seasons as assistant and associate concertmaster, performing across Russia, Europe, and
+                            China. She also joined the Orchestra of the Americas for their South American tour. Most
+                            recently, she returned to Carnegie Hall with the NYO-USA All-Stars Orchestra, led by Yannick
+                            Nézet-Séguin. She has shared the stage with conductors and artists such as Valery Gergiev,
+                            Charles Dutoit, Gerard Schwarz, Joshua Bell, Emanuel Ax, and Daniil Trifonov.</p><br>
+                        <p>As a chamber musician, she's spent her summers at festivals such as Festival Napa Valley and
+                            Zephyr International Chamber Music Festival. As a member of the Henry Mancini Institute
+                            String Quartet, she performed at National Sawdust in New York, on the Billings Symphony
+                            Sukin Series, and across the Adirondacks. Most recently, she joined Thirdspace Quartet
+                            for a full season in Boise. Rosie has appeared as a soloist with the Frost Symphony
+                            Orchestra, Billings Symphony, Great Falls Symphony, Glacier Symphony, and Battle Creek
+                            Symphony. And most recently, with the Henry Mancini Orchestra at Festival Napa Valley.</p>
+                        <br>
+                        <p>Alongside her classical career, Rosie started playing with the Billings Ceilidh Fiddlers at
+                            age 4, and had won two Montana State championships by the time she was 10. She’s been an
+                            instructor at the Montana Fiddle Camp, and has performed alongside musicians like Jeremy
+                            Kittel, Bobby Hicks, Nicole Yarling, and Gregg Field. Rosie has recorded for artists such as
+                            Alex Lacamoire and Kishi Bashi, including a Grammy award-winning album by John Daversa.</p>
+                        <br>
+                        <p>In her free time, you can find Rosie hiking and birding in her favorite places in Idaho and
+                            Montana.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header reveal">
+            <span class="section-label">Connect</span>
+            <h2 class="section-title">Contact Us</h2>
+        </div>
+        <div class="contact-content reveal">
+            <p class="contact-text">Whether you're interested in attending a
+                performance, hosting a house concert or have any feedback, questions and/or just want to learn more
+                about
+                Chamber Music Boise - we would love to hear from you! Please email us at <a
+                    href="mailto:chambermusicboise@gmail.com"
+                    style="color: inherit; text-decoration: underline;">chambermusicboise@gmail.com</a> or fill out the
+                form below and we'll get back to you ASAP.</p>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="mailingList">Would you like to join our mailing list?</label>
+                    <select id="mailingList" name="mailingList" class="form-control">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <img src="cmblogo.png" alt="Chamber Music Boise" class="footer-logo">
+            <div class="footer-divider"></div>
+            <p class="footer-copyright">&copy; 2026 Chamber Music Boise. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Reveal animation on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Contact Form Handler
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            const mailingList = document.getElementById('mailingList').value;
+
+            const body = `Name: ${firstName} ${lastName}
+Email: ${email}
+Join Mailing List: ${mailingList}
+
+Message:
+${message}`;
+
+            window.location.href = `mailto:chambermusicboise@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
+    </script>
+</body>
+
+</html>
