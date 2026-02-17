@@ -183,8 +183,12 @@
         .menu-toggle span {
             width: 25px;
             height: 1px;
-            background: var(--dark-brown);
+            background: var(--white);
             transition: all 0.3s ease;
+        }
+
+        .nav-container.scrolled .menu-toggle span {
+            background: var(--dark-brown);
         }
 
         /* Hero Section */
@@ -984,8 +988,8 @@
                 <img src="Nicoleaction.JPG" alt="Chamber Music Boise Performance">
             </div>
             <div class="about-content reveal">
-                <p class="about-text" style="font-size: 1.5rem; line-height: 1.6; margin-bottom: 2rem;">Founded in the
-                    spring of 2026, Chamber Music Boise (CMB) was established to serve as a vibrant and active hub for
+                <p class="about-text" style="font-size: 1.5rem; line-height: 1.6; margin-bottom: 2rem;">Chamber Music
+                    Boise (CMB) serves as a vibrant and active hub for
                     chamber music in Boise and the greater Treasure Valley.</p>
                 <div style="width: 40px; height: 1px; background: var(--burgundy); margin-bottom: 2rem;"></div>
                 <p class="about-text">Our mission is to provide world-class, consistent chamber music experiences
@@ -1009,11 +1013,11 @@
             <div class="concert-card reveal">
                 <img src="tuttlehouse.jpg" alt="Tuttle House" class="concert-image">
                 <div class="concert-content">
-                    <p class="concert-venue">Tuttle House at St. Michael's Episcopal Cathedral</p>
+                    <p class="concert-venue">St. Michael's Episcopal Cathedral</p>
                     <h3 class="concert-title">Tuttle House Concerts</h3>
                     <p class="concert-description">In partnership with Tuttle House at St. Michael's Episcopal Cathedral
-                        & Idaho Concerts in Care. Chamber Music Boise is thrilled to announce the launch of a brand new
-                        Chamber Music Series. We invite you to join us for a series of intimate, hour-long performances
+                        & Idaho Concerts in Care. We invite you to join us for a series of intimate, hour-long
+                        performances
                         that explore the depth and beauty of chamber music. Each program offers a thoughtfully curated
                         experience designed to inspire and deepen an appreciation for this rich and expressive art form.
                         Following each concert, please join us for complimentary refreshments and the opportunity to
@@ -1027,10 +1031,10 @@
                 <img src="bownlibrary.jpg" alt="Library at Bown Crossing" class="concert-image">
                 <div class="concert-content">
                     <p class="concert-venue">Library! At Bown Crossing</p>
-                    <h3 class="concert-title">CMB at Bown Crossing</h3>
+                    <h3 class="concert-title">CMB @ Bown Crossing</h3>
                     <p class="concert-description">Where contemporary architecture meets classical performance — CMB is
-                        proud to partner with the Library! At Bown Crossing in this brand new chamber music series. With
-                        floor-to-ceiling windows and soaring timber ceilings, please join us for an evening of chamber
+                        proud to partner with the Library! At Bown Crossing. With
+                        floor-to-ceiling windows and soaring timber ceilings, join us for an evening of chamber
                         music in this beautiful setting located at the heart of Southeast Boise.</p>
                 </div>
             </div>
@@ -1069,9 +1073,9 @@
             <!-- Classical Cocktails -->
             <div class="concert-card no-image reveal">
                 <p class="concert-venue">Local Boise Venues</p>
-                <h3 class="concert-title">Classical Cocktails CMB</h3>
-                <p class="concert-description">Chamber Music Boise meets cocktail culture — join us for an evening of
-                    intimate performances, each thoughtfully paired with unique craft cocktails (or mocktails) designed
+                <h3 class="concert-title">Classical Cocktails</h3>
+                <p class="concert-description">Chamber Music Boise meets cocktail culture — join us for special
+                    performances, thoughtfully paired with uniquely crafted cocktails (or mocktails) designed
                     specifically to complement the music. Each show supports a local bar, right here in Boise, as well
                     as the musicians of Chamber Music Boise. Whether you've never listened to classical music, or are a
                     connoisseur — classical cocktails aims to create a welcoming environment for everyone, regardless of
@@ -1087,7 +1091,7 @@
                     <h3 class="concert-title">CMB at Home</h3>
                     <p class="concert-description">The most intimate chamber music experience: world-class performances
                         in the warmth of private homes, continuing the centuries-old salon tradition. Experience the
-                        magic of music alongside the artists of CMB in your home. Please inquire with us <a
+                        magic of live music by welcoming artists of CMB into your home. Please inquire with us <a
                             href="#contact">here</a>.</p>
                 </div>
             </div>
@@ -1106,7 +1110,8 @@
                     <img src="Aubrey Holmes.jpg" alt="Aubrey Holmes" class="artist-image">
                 </div>
                 <div class="artist-info">
-                    <h3 class="artist-name">Aubrey Holmes</h3>
+                    <h3 class="artist-name"><a href="http://www.aubreyholmes.com" target="_blank"
+                            style="text-decoration: none; color: inherit;">Aubrey Holmes</a></h3>
                     <p class="artist-instrument">Violin / Viola</p>
                     <div class="artist-bio">
                         <p>“…a warm sound, and much joy…vivacious!” - The Strad [Carnegie Hall debut]</p><br>
@@ -1147,7 +1152,8 @@
                     <img src="Nicole Oswald.jpg" alt="Nicole Oswald" class="artist-image">
                 </div>
                 <div class="artist-info">
-                    <h3 class="artist-name">Nicole Oswald</h3>
+                    <h3 class="artist-name"><a href="http://www.nicoleoswald.com" target="_blank"
+                            style="text-decoration: none; color: inherit;">Nicole Oswald</a></h3>
                     <p class="artist-instrument">Violin</p>
                     <div class="artist-bio">
                         <p>Nicole Oswald has served as the Acting Concertmaster of the Boise Philharmonic Orchestra
@@ -1180,11 +1186,13 @@
                     <img src="Rosie Weiss.jpg" alt="Rosie Weiss" class="artist-image">
                 </div>
                 <div class="artist-info">
-                    <h3 class="artist-name">Rosie Weiss</h3>
+                    <h3 class="artist-name"><a href="http://www.rosieweiss.com" target="_blank"
+                            style="text-decoration: none; color: inherit;">Rosie Weiss</a></h3>
                     <p class="artist-instrument">Violin</p>
                     <div class="artist-bio">
-                        <p>Rosie Weiss is a versatile violinist, fiddler, and studio musician. She’s currently associate
-                            concertmaster of the Billings Symphony, and also performs with the Boise Philharmonic,
+                        <p>Rosie Weiss is a versatile violinist, fiddler, and studio musician. She’s associate
+                            concertmaster of the Billings Symphony, co-founder of Chamber Music Boise (CMB), and
+                            performs with the Boise Philharmonic,
                             Bozeman Symphony, and Palm Beach Symphony. She’s adjunct violin faculty at Rocky Mountain
                             College, and maintains a private violin and fiddle studio in Boise, Idaho.</p><br>
                         <p>As a founding member of Carnegie Hall's National Youth Orchestra, she served for three
