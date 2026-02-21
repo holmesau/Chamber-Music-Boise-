@@ -479,13 +479,12 @@
 
         .concert-image {
             width: 100%;
-            height: auto;
-            /* Allow natural height */
-            min-height: 280px;
+            height: 400px;
+            /* Fixed height for alignment */
             object-fit: contain;
-            /* Show full image */
-            background: var(--cream-dark);
-            /* Background for gaps if aspect ratio differs */
+            /* Show full image without cropping */
+            background: var(--white);
+            /* Background matches card */
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -1045,21 +1044,10 @@
                 </div>
             </div>
 
-            <!-- CMB at Bown Crossing -->
-            <div class="concert-card reveal">
-                <img src="bownlibrary.jpg" alt="Library at Bown Crossing" class="concert-image">
-                <div class="concert-content">
-                    <p class="concert-venue">Library! At Bown Crossing</p>
-                    <h3 class="concert-title">CMB @ Bown Crossing</h3>
-                    <p class="concert-description">Where contemporary architecture meets classical performance — CMB is
-                        proud to partner with the Library! At Bown Crossing. With
-                        floor-to-ceiling windows and soaring timber ceilings, join us for an evening of chamber
-                        music in this beautiful setting located at the heart of Southeast Boise.</p>
-                </div>
-            </div>
+
 
             <!-- Davis Fund -->
-            <div class="concert-card full-width reveal">
+            <div class="concert-card reveal">
                 <img src="StStephens.jpg" alt="St. Stephen's Episcopal Church" class="concert-image">
                 <div class="concert-content">
                     <p class="concert-venue">St. Stephen's Episcopal Church, Boise ID</p>
@@ -1083,6 +1071,7 @@
                 </div>
             </div>
 
+
             <!-- Classical Cocktails -->
             <div class="concert-card no-image reveal">
                 <p class="concert-venue">Local Boise Venues</p>
@@ -1097,7 +1086,7 @@
             </div>
 
             <!-- CMB at Home -->
-            <div class="concert-card reveal">
+            <div class="concert-card no-image reveal">
                 <!-- Image Removed as requested -->
                 <div class="concert-content">
                     <p class="concert-venue">House Concerts / Private Residences</p>
