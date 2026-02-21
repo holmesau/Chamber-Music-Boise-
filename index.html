@@ -576,20 +576,20 @@
             flex-shrink: 0;
             opacity: 0.9;
             margin-top: -10px;
-            /* Raised image slightly */
         }
 
         .concert-title-image {
             display: block;
-            max-height: 192px;
-            /* Enlarged to 1.5x (from 128px) */
-            width: auto;
+            max-width: 240px;
+            /* Enlarged to accommodate cocktail illustration (1.5x of 160px) */
+            width: 100%;
+            height: auto;
             margin-left: auto;
             /* Centered block image */
             margin-right: auto;
             /* Centered block image */
             margin-bottom: 2rem;
-            /* Added space below prominent logo */
+            /* Consistent spacing below header images */
             opacity: 0.95;
             transition: transform 0.3s ease;
         }
@@ -1128,24 +1128,22 @@
 
             <!-- Classical Cocktails -->
             <div class="concert-card no-image reveal">
-                <div class="concert-header-flex">
-                    <div class="concert-title-container">
-                        <p class="concert-venue">Local Boise Venues</p>
-                        <h3 class="concert-title">Classical Cocktails</h3>
-                    </div>
-                    <div class="concert-image-container">
-                        <img src="classicalcocktailsimage.png" alt="Classical Cocktails" class="concert-small-image">
-                    </div>
+                <div class="concert-content" style="text-align: center;">
+                    <img src="classicalcocktailsimage.png" alt="Classical Cocktails" class="concert-title-image">
+                    <p class="concert-description" style="text-align: left;">Chamber Music Boise meets cocktail culture
+                        — join us for special
+                        performances, thoughtfully paired with uniquely crafted cocktails (or mocktails) designed
+                        specifically to complement the music. Each show supports a local bar, right here in Boise, as
+                        well
+                        as the musicians of Chamber Music Boise. Whether you've never listened to classical music, or
+                        are a
+                        connoisseur — classical cocktails aims to create a welcoming environment for everyone,
+                        regardless of
+                        musical background or knowledge. Together, we'll expand our palette of sounds and flavors in a
+                        fun
+                        and relaxed setting, all while getting to sip on some of our favorite drinks — Cheers!</p>
                 </div>
-                <p class="concert-description">Chamber Music Boise meets cocktail culture — join us for special
-                    performances, thoughtfully paired with uniquely crafted cocktails (or mocktails) designed
-                    specifically to complement the music. Each show supports a local bar, right here in Boise, as well
-                    as the musicians of Chamber Music Boise. Whether you've never listened to classical music, or are a
-                    connoisseur — classical cocktails aims to create a welcoming environment for everyone, regardless of
-                    musical background or knowledge. Together, we'll expand our palette of sounds and flavors in a fun
-                    and relaxed setting, all while getting to sip on some of our favorite drinks — Cheers!</p>
             </div>
-
             <!-- CMB at Home -->
             <div class="concert-card no-image reveal">
                 <div class="concert-content" style="text-align: center;">
