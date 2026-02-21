@@ -551,10 +551,21 @@
 
         .concert-header-flex {
             display: flex;
-            justify-content: flex-start;
             align-items: flex-start;
-            gap: 1rem;
             margin-bottom: 0.5rem;
+        }
+
+        .concert-title-container {
+            /* Title takes only needed space */
+            flex-shrink: 0;
+        }
+
+        .concert-image-container {
+            /* Remaining space is used for centering the image */
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
 
         .concert-small-image {
@@ -1095,11 +1106,13 @@
             <!-- Classical Cocktails -->
             <div class="concert-card no-image reveal">
                 <div class="concert-header-flex">
-                    <div>
+                    <div class="concert-title-container">
                         <p class="concert-venue">Local Boise Venues</p>
                         <h3 class="concert-title">Classical Cocktails</h3>
                     </div>
-                    <img src="classicalcocktailsimage.png" alt="Classical Cocktails" class="concert-small-image">
+                    <div class="concert-image-container">
+                        <img src="classicalcocktailsimage.png" alt="Classical Cocktails" class="concert-small-image">
+                    </div>
                 </div>
                 <p class="concert-description">Chamber Music Boise meets cocktail culture — join us for special
                     performances, thoughtfully paired with uniquely crafted cocktails (or mocktails) designed
