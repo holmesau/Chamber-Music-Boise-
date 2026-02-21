@@ -862,6 +862,30 @@
             color: var(--dark-brown);
         }
 
+        .form-status {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 2px;
+            display: none;
+            font-size: 0.85rem;
+            text-align: center;
+            letter-spacing: 0.05em;
+        }
+
+        .form-status.success {
+            display: block;
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+            border: 1px solid rgba(40, 167, 69, 0.2);
+        }
+
+        .form-status.error {
+            display: block;
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            border: 1px solid rgba(220, 53, 69, 0.2);
+        }
+
         /* Footer */
         footer {
             background: var(--charcoal);
@@ -1299,7 +1323,8 @@
                     style="color: inherit; text-decoration: underline;">chambermusicboise@gmail.com</a> or fill out the
                 form below and we'll get back to you ASAP.</p>
 
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form" id="contactForm"
+                action="https://formspree.io/f/664c326f-22b5-46ff-821e-3fd950d485f7" method="POST">
                 <div class="form-group">
                     <label for="firstName">First Name</label>
                     <input type="text" id="firstName" name="firstName" class="form-control" required>
@@ -1327,7 +1352,8 @@
                         <option value="No">No</option>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn">Submit</button>
+                <button type="submit" class="submit-btn" id="submitBtn">Submit</button>
+                <div id="formStatus" class="form-status"></div>
             </form>
         </div>
     </section>
@@ -1390,25 +1416,55 @@
             });
         });
 
-        // Contact Form Handler
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
+        // Contact Form Handler (Formspree)
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('submitBtn');
+
+        contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
 
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            const mailingList = document.getElementById('mailingList').value;
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
 
-            const body = `Name: ${firstName} ${lastName}
-Email: ${email}
-Join Mailing List: ${mailingList}
+            // Add a full name field for better email display
+            data.Name = `${data.firstName} ${data.lastName}`;
 
-Message:
-${message}`;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            formStatus.textContent = '';
+            formStatus.className = 'form-status';
 
-            window.location.href = `mailto:chambermusicboise@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            try {
+                const response = await fetch(this.action, {
+                    method: this.method,
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    formStatus.textContent = 'Thanks! Your message has been sent.';
+                    formStatus.classList.add('success');
+                    contactForm.reset();
+                } else {
+                    const result = await response.json();
+                    if (result.errors) {
+                        formStatus.textContent = result.errors.map(error => error.message).join(", ");
+                    } else {
+                        formStatus.textContent = 'Oops! There was a problem submitting your form.';
+                    }
+                    formStatus.classList.add('error');
+                }
+            } catch (error) {
+                formStatus.textContent = 'Oops! There was a problem submitting your form.';
+                formStatus.classList.add('error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit';
+            }
         });
     </script>
 </body>
