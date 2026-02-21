@@ -493,7 +493,8 @@
         }
 
         .concert-content {
-            padding: 2.5rem;
+            padding: 1.25rem 2.5rem 2.5rem;
+            /* Reduced top padding to move text up */
         }
 
         .concert-venue {
@@ -1128,10 +1129,16 @@
 
             <!-- CMB at Home -->
             <div class="concert-card no-image reveal">
-                <!-- Image Removed as requested -->
                 <div class="concert-content">
-                    <p class="concert-venue">House Concerts / Private Residences</p>
-                    <h3 class="concert-title">CMB at Home</h3>
+                    <div class="concert-header-flex">
+                        <div class="concert-title-container">
+                            <p class="concert-venue">House Concerts / Private Residences</p>
+                            <h3 class="concert-title">CMB at Home</h3>
+                        </div>
+                        <div class="concert-image-container">
+                            <img src="cmb_logo_at_home.png" alt="CMB at Home" class="concert-small-image">
+                        </div>
+                    </div>
                     <p class="concert-description">The most intimate chamber music experience: world-class performances
                         in the warmth of private homes, continuing the centuries-old salon tradition. Experience the
                         magic of live music by welcoming artists of CMB into your home. Please inquire with us <a
