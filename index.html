@@ -445,6 +445,65 @@
             border-bottom-color: var(--burgundy);
         }
 
+        /* Upcoming Concerts Section */
+        .upcoming-concerts {
+            background: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .upcoming-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--cream);
+            padding: 4rem;
+            position: relative;
+            border: 1px solid rgba(44, 82, 130, 0.1);
+        }
+
+        .upcoming-title {
+            font-size: 2.5rem;
+            color: var(--dark-brown);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .upcoming-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--burgundy);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .upcoming-venue {
+            font-size: 1rem;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .upcoming-link {
+            display: inline-block;
+            color: var(--burgundy);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            border-bottom: 1px solid var(--burgundy);
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .upcoming-link:hover {
+            color: var(--burgundy-light);
+            border-bottom-color: var(--burgundy-light);
+            transform: translateY(-1px);
+        }
+
         /* Concerts Section */
         .concerts {
             background: var(--cream);
@@ -1096,6 +1155,20 @@
         </div>
     </section>
 
+    <!-- Upcoming Concerts Section -->
+    <section class="upcoming-concerts" id="upcoming">
+        <div class="section-header reveal">
+            <span class="section-label">Next Event</span>
+            <h2 class="section-title">Upcoming Concerts</h2>
+        </div>
+        <div class="upcoming-container reveal">
+            <p class="upcoming-date">Sunday April 12 at 3pm</p>
+            <h3 class="upcoming-title">Antonín Dvořák: Romantic Miniatures</h3>
+            <p class="upcoming-venue">Tuttle House at St. Stephen's Episcopal Cathedral in Boise Idaho</p>
+            <a href="#tuttle-concert" class="upcoming-link">Click here for more information</a>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section class="about" id="about">
         <div class="section-header reveal">
@@ -1130,7 +1203,7 @@
         </div>
         <div class="concerts-grid">
             <!-- Tuttle House Concerts -->
-            <div class="concert-card reveal">
+            <div class="concert-card reveal" id="tuttle-concert">
                 <img src="tuttlehouse.jpg" alt="Tuttle House" class="concert-image">
                 <div class="concert-content">
                     <p class="concert-venue">St. Michael's Episcopal Cathedral, Boise ID</p>
