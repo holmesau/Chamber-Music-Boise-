@@ -171,6 +171,54 @@
             color: var(--burgundy);
         }
 
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            min-width: 220px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            padding: 1rem 0;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            list-style: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content li {
+            padding: 0;
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--dark-brown) !important;
+            padding: 0.8rem 1.5rem;
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-align: center;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--cream);
+            color: var(--burgundy) !important;
+        }
+
+        .dropdown-content a::after {
+            display: none;
+        }
+
         /* Mobile Menu */
         .menu-toggle {
             display: none;
@@ -1117,6 +1165,24 @@
                 display: flex;
             }
 
+            /* Mobile Dropdown Adjustments */
+            .dropdown-content {
+                position: static;
+                display: block;
+                box-shadow: none;
+                background: transparent;
+                padding: 0;
+                transform: none;
+                border-left: 1px solid var(--gold);
+                margin-left: 1rem;
+                margin-top: 0.5rem;
+            }
+
+            .dropdown-content a {
+                text-align: left;
+                padding: 0.5rem 1rem;
+            }
+
             .menu-toggle {
                 display: flex;
             }
@@ -1174,8 +1240,13 @@
                 <li><a href="#upcoming">Upcoming</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#concerts">Concerts</a></li>
-                <li><a href="#artists">Artists</a></li>
-                <li><a href="#guest-artists">Guest Artists</a></li>
+                <li class="dropdown">
+                    <a href="#artists" class="dropbtn">Artists</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#artists">Artists-in-Residence</a></li>
+                        <li><a href="#guest-artists">Guest Artists</a></li>
+                    </ul>
+                </li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
