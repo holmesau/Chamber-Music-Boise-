@@ -504,6 +504,32 @@
             text-align: center;
         }
 
+        .upcoming-concerts .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .upcoming-concerts .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.35em;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--burgundy);
+        }
+
+        .upcoming-concerts .section-title {
+            font-size: clamp(2.2rem, 4.5vw, 3.25rem);
+            color: var(--dark-brown);
+            letter-spacing: 0.03em;
+            font-weight: 300;
+        }
+
+        .upcoming-concerts .section-title::after {
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+            bottom: -1rem;
+        }
+
         .upcoming-card {
             max-width: 900px;
             margin: 0 auto;
@@ -1331,6 +1357,10 @@
 
             .concert-card.full-width .concert-content {
                 padding: 2rem;
+            }
+
+            .upcoming-concerts .section-header {
+                margin-bottom: 2rem;
             }
 
             .upcoming-container {
