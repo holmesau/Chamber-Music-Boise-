@@ -500,8 +500,197 @@
         /* Upcoming Concerts Section */
         .upcoming-concerts {
             background: var(--white);
-            padding: 6rem 2rem;
+            padding: 5rem 2rem;
             text-align: center;
+        }
+
+        .upcoming-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            padding: 3.5rem 3rem;
+            position: relative;
+            border-radius: 16px;
+            border: 1px solid rgba(44, 82, 130, 0.15);
+            box-shadow: 0 20px 40px rgba(26, 54, 93, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .upcoming-card:hover {
+            box-shadow: 0 25px 50px rgba(26, 54, 93, 0.08);
+        }
+
+        .upcoming-badge-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .upcoming-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(44, 82, 130, 0.08);
+            color: var(--burgundy);
+            font-size: 0.825rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            border: 1px solid rgba(44, 82, 130, 0.15);
+        }
+
+        .upcoming-present-tag {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--burgundy);
+            margin-bottom: 0.75rem;
+        }
+
+        .upcoming-piece-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
+            color: var(--dark-brown);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            line-height: 1.25;
+        }
+
+        .upcoming-piece-title span {
+            font-style: italic;
+            color: var(--burgundy);
+            font-weight: 400;
+        }
+
+        .upcoming-artists-pills {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .artist-pill-label {
+            font-size: 0.85rem;
+            color: var(--charcoal);
+            opacity: 0.85;
+            font-weight: 500;
+        }
+
+        .artist-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--cream);
+            color: var(--dark-brown);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            border: 1px solid rgba(44, 82, 130, 0.2);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.25s ease;
+        }
+
+        .artist-pill .instrument {
+            color: var(--burgundy);
+            font-size: 0.825rem;
+            font-weight: 400;
+        }
+
+        .artist-pill:hover {
+            background: var(--burgundy);
+            color: var(--white);
+            border-color: var(--burgundy);
+            transform: translateY(-2px);
+        }
+
+        .artist-pill:hover .instrument {
+            color: var(--gold);
+        }
+
+        .upcoming-details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .upcoming-detail-box {
+            background: var(--cream);
+            border: 1px solid rgba(44, 82, 130, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .upcoming-detail-box:hover {
+            border-color: rgba(44, 82, 130, 0.3);
+            background: #F4F8FC;
+        }
+
+        .detail-icon-bg {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(44, 82, 130, 0.1);
+            color: var(--burgundy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .detail-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--burgundy);
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .detail-value {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--dark-brown);
+            line-height: 1.35;
+        }
+
+        .detail-sub {
+            font-size: 0.875rem;
+            color: var(--charcoal);
+            opacity: 0.85;
+            margin-top: 0.25rem;
+            line-height: 1.4;
+        }
+
+        .upcoming-footer-note {
+            margin-top: 2rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(44, 82, 130, 0.1);
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            color: var(--charcoal);
+            opacity: 0.75;
+            text-transform: uppercase;
+            font-weight: 500;
         }
 
         .upcoming-container {
@@ -511,77 +700,6 @@
             padding: 4rem;
             position: relative;
             border: 1px solid rgba(44, 82, 130, 0.1);
-        }
-
-        .upcoming-title {
-            font-size: 2.5rem;
-            color: var(--dark-brown);
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-        }
-
-        .upcoming-date {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: var(--burgundy);
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .upcoming-venue {
-            font-size: 1rem;
-            color: var(--charcoal);
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .upcoming-description {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            color: var(--charcoal);
-            max-width: 800px;
-            margin: 0 auto;
-            font-weight: 300;
-        }
-
-        .upcoming-donation {
-            font-size: 0.9rem;
-            color: var(--burgundy);
-            margin-top: 1.5rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .upcoming-invitation {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            color: var(--charcoal);
-            max-width: 800px;
-            margin: 1.5rem auto 0;
-            font-weight: 300;
-            font-style: italic;
-        }
-
-        .upcoming-link {
-            display: inline-block;
-            color: var(--burgundy);
-            text-decoration: none;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            border-bottom: 1px solid var(--burgundy);
-            padding-bottom: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .upcoming-link:hover {
-            color: var(--burgundy-light);
-            border-bottom-color: var(--burgundy-light);
-            transform: translateY(-1px);
         }
 
         /* Concerts Section */
@@ -1219,9 +1337,34 @@
                 padding: 3rem 1.5rem;
             }
 
-            .upcoming-description {
-                max-width: 100%;
-                font-size: 0.9rem;
+            .upcoming-card {
+                padding: 2.25rem 1.25rem;
+                border-radius: 12px;
+            }
+
+            .upcoming-details-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .upcoming-detail-box {
+                padding: 1.25rem 1rem;
+                gap: 1rem;
+            }
+
+            .detail-icon-bg {
+                width: 38px;
+                height: 38px;
+            }
+
+            .upcoming-badge {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.85rem;
+            }
+
+            .artist-pill-label {
+                width: 100%;
+                margin-bottom: 0.25rem;
             }
         }
     </style>
@@ -1275,14 +1418,58 @@
             <span class="section-label">Next Event</span>
             <h2 class="section-title">Upcoming Performances</h2>
         </div>
-        <div class="upcoming-container reveal">
-            <p class="upcoming-description" style="font-size: 1.1rem; max-width: 800px; margin: 0 auto; margin-bottom: 2rem;">All concerts are FREE to attend with a suggested donation of $20-$30 for individuals, no tickets required</p>
-            
-            <p class="upcoming-description" style="font-size: 1.1rem; max-width: 800px; margin: 0 auto; margin-bottom: 2rem; line-height: 2;">Chamber Music Boise is proud to present:<br>
-            <strong>Johannes Brahms:</strong> The Piano Quintet<br><br>
-            Featuring Guest Artists: <a href="#guest-artists" style="text-decoration: underline; color: inherit;">Jennifer Blyth</a> (piano) and <a href="#guest-artists" style="text-decoration: underline; color: inherit;">Michael Cameron</a> (cello)<br>
-            <strong>WHEN:</strong> Friday, 10/30, 7:30pm-8:30pm<br>
-            <strong>WHERE:</strong> Downtown Boise @ First Presbyterian Church Boise (950 W State St, Boise, ID 83702)</p>
+        <div class="upcoming-card reveal">
+            <div class="upcoming-badge-wrapper">
+                <span class="upcoming-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    Free Admission &bull; $20-$30 Suggested Donation
+                </span>
+            </div>
+
+            <div class="upcoming-content-header">
+                <span class="upcoming-present-tag">Chamber Music Boise Presents</span>
+                <h3 class="upcoming-piece-title">Johannes Brahms: <span>The Piano Quintet</span></h3>
+                
+                <div class="upcoming-artists-pills">
+                    <span class="artist-pill-label">Featuring Guest Artists:</span>
+                    <a href="#guest-artists" class="artist-pill">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        Jennifer Blyth <span class="instrument">(piano)</span>
+                    </a>
+                    <a href="#guest-artists" class="artist-pill">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        Michael Cameron <span class="instrument">(cello)</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="upcoming-details-grid">
+                <div class="upcoming-detail-box">
+                    <div class="detail-icon-bg">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                    <div class="detail-info">
+                        <span class="detail-label">WHEN</span>
+                        <strong class="detail-value">Friday, 10/30</strong>
+                        <span class="detail-sub">7:30pm &ndash; 8:30pm</span>
+                    </div>
+                </div>
+
+                <div class="upcoming-detail-box">
+                    <div class="detail-icon-bg">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div class="detail-info">
+                        <span class="detail-label">WHERE</span>
+                        <strong class="detail-value">First Presbyterian Church Boise</strong>
+                        <span class="detail-sub">Downtown Boise (950 W State St, Boise, ID 83702)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upcoming-footer-note">
+                No Tickets Required &bull; All Are Welcome
+            </div>
         </div>
     </section>
 
