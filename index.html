@@ -719,6 +719,46 @@
             font-weight: 500;
         }
 
+        .upcoming-spotlight {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px dashed rgba(44, 82, 130, 0.2);
+            text-align: center;
+        }
+
+        .upcoming-spotlight-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--burgundy);
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.02em;
+        }
+
+        .upcoming-spotlight-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .upcoming-spotlight-item {
+            font-size: 1.05rem;
+            color: var(--dark-brown);
+            line-height: 1.4;
+        }
+
+        .upcoming-spotlight-item strong {
+            font-weight: 600;
+            color: var(--burgundy);
+        }
+
+        .upcoming-spotlight-item .spotlight-details {
+            color: var(--charcoal);
+            font-size: 0.95rem;
+        }
+
+
         .upcoming-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -1499,6 +1539,21 @@
 
             <div class="upcoming-footer-note">
                 No Tickets Required &bull; All Are Welcome
+            </div>
+
+            <div class="upcoming-spotlight">
+                <h4 class="upcoming-spotlight-title">Student Spotlight: Student's of CMB</h4>
+                <div class="upcoming-spotlight-list">
+                    <div class="upcoming-spotlight-item">
+                        <strong>Sophia Eby</strong>, <span class="spotlight-details">violin - 9th Grade</span>
+                    </div>
+                    <div class="upcoming-spotlight-item">
+                        <strong>Elena O'Riordan</strong>, <span class="spotlight-details">violin - HS Senior</span>
+                    </div>
+                    <div class="upcoming-spotlight-item">
+                        <strong>Peggy Purdy</strong>, <span class="spotlight-details">Pianist</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
