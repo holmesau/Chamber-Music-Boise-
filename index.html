@@ -854,6 +854,24 @@
             border-bottom-color: var(--burgundy);
         }
 
+        /* Past Concert styling */
+        .past-concert {
+            opacity: 0.65;
+            text-decoration: line-through;
+            text-decoration-color: rgba(44, 24, 16, 0.4);
+            text-decoration-thickness: 1.5px;
+            transition: opacity 0.3s ease;
+        }
+
+        .past-concert:hover {
+            opacity: 0.9;
+        }
+
+        .past-concert a {
+            text-decoration: line-through underline !important;
+            text-decoration-color: rgba(92, 26, 42, 0.45) !important;
+        }
+
         /* Full-width concert card */
         .concert-card.full-width {
             grid-column: 1 / -1;
@@ -1593,9 +1611,9 @@
             <p class="concert-description" style="font-size: 1.1rem; text-align: center; margin-bottom: 3rem;">All concerts are FREE to attend with a suggested donation of $20-$30 for individuals, no tickets required</p>
             
             <div style="margin-bottom: 3.5rem; border-left: 2px solid var(--gold); padding-left: 2rem;">
-                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; color: var(--burgundy); letter-spacing: 0.1em; margin-bottom: 1.5rem; text-transform: uppercase;">July</h4>
+                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; color: var(--burgundy); letter-spacing: 0.1em; margin-bottom: 1.5rem; text-transform: uppercase;">July <span style="font-size: 0.75rem; letter-spacing: 0.08em; opacity: 0.65; font-weight: 500; text-transform: uppercase; margin-left: 0.5rem; vertical-align: middle;">(Past)</span></h4>
                 
-                <p class="concert-description" style="margin-bottom: 2.5rem; font-size: 1.05rem; line-height: 2;">
+                <p class="concert-description past-concert" style="margin-bottom: 2.5rem; font-size: 1.05rem; line-height: 2;">
                     <a href="#classical-cocktails" style="text-decoration: underline; color: var(--burgundy); font-weight: 500;">Classical Cocktails</a>: "Northbound: A Nordic Soundscape"<br>
                     Featuring Guest Artist: <a href="#guest-artists" style="text-decoration: underline; color: var(--burgundy); font-weight: 500;">Kyle Stachnik</a> (cello)<br>
                     <strong>WHEN:</strong> Thursday, 7/16, 8:00pm-9:00pm<br>
@@ -1603,7 +1621,7 @@
                     For more information please check out <a href="#classical-cocktails" style="text-decoration: underline; color: var(--burgundy); font-weight: 500;">Classical Cocktails</a>
                 </p>
 
-                <p class="concert-description" style="font-size: 1.05rem; line-height: 2;">
+                <p class="concert-description past-concert" style="font-size: 1.05rem; line-height: 2;">
                     "Beethoven and Dvořák: Razumovsky & The Cypresses"<br>
                     Featuring Guest Artist: <a href="#guest-artists" style="text-decoration: underline; color: var(--burgundy); font-weight: 500;">Kyle Stachnik</a> (cello)<br>
                     <strong>WHEN:</strong> Sunday, 7/19, 3pm-4pm<br>
@@ -1615,8 +1633,8 @@
             </div>
 
             <div style="margin-bottom: 3.5rem; border-left: 2px solid var(--gold); padding-left: 2rem;">
-                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; color: var(--burgundy); letter-spacing: 0.1em; margin-bottom: 1rem; text-transform: uppercase;">October</h4>
-                <p class="concert-description" style="font-size: 1.05rem; line-height: 2;">
+                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; color: var(--burgundy); letter-spacing: 0.1em; margin-bottom: 1rem; text-transform: uppercase;">October <span style="font-size: 0.75rem; letter-spacing: 0.08em; opacity: 0.65; font-weight: 500; text-transform: uppercase; margin-left: 0.5rem; vertical-align: middle;">(Past)</span></h4>
+                <p class="concert-description past-concert" style="font-size: 1.05rem; line-height: 2;">
                     <strong>Johannes Brahms:</strong> The Piano Quintet<br>
                     Featuring Guest Artists: <a href="#guest-artists" style="text-decoration: underline; color: var(--burgundy); font-weight: 500;">Jennifer Blyth</a> (piano) and <a href="#guest-artists" style="text-decoration: underline; color: var(--burgundy); font-weight: 500;">Michael Cameron</a> (cello)<br>
                     <strong>WHEN:</strong> Friday, October 30, 7:30pm-8:30pm<br>
